@@ -1,0 +1,18 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Message {
+  """Example field (placeholder)"""
+  exampleField: Int!
+
+  """Message id"""
+  tenantId: Int!
+
+  """Message content"""
+  content: String!
+}
+
+type Query {
+  message: [Message!]!
+}
