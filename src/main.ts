@@ -8,16 +8,15 @@ async function bootstrap() {
   app.connectMicroservice({
     transport: Transport.RMQ,
     options: {
-      urls: ['amqp://localhost:5672'],
+      urls: ['amqp://guest:guest@localhost:5672'],
       queue: 'output',
       queueOptions: {
-        durable: false,
+        durable: true,
       },
     },
   });
 
   await app.startAllMicroservices();
-
   await app.listen(3000);
 }
 bootstrap();

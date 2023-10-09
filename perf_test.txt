@@ -1,0 +1,9 @@
+docker run -it --rm \
+  --network=nestjs-graphql_default \
+  pivotalrabbitmq/perf-test:latest \
+  --uri amqp://guest:guest@rabbitmq:5672 \
+  --queue output111 \
+  --rate 1 \
+  --pmessages 1 \
+  --producers 1 \
+  --body "any"

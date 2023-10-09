@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MessageModule } from './message/message.module';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { MessageModule } from './message/message.module';
       autoSchemaFile: 'schema.gql',
     }),
     MessageModule,
+    RabbitmqModule,
   ],
   controllers: [AppController],
   providers: [AppService],
