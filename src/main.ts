@@ -16,13 +16,6 @@ async function bootstrap() {
     },
   });
 
-  app.enableCors({
-    origin: 'http://localhost:3001', // Ou de onde quer que sua aplicação cliente esteja vindo
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type, Accept',
-    credentials: true,
-  });
-
   await app.startAllMicroservices();
   await app.listen(3000);
 }

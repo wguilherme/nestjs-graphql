@@ -4,13 +4,13 @@
 
 type Message {
   """Example field (placeholder)"""
-  exampleField: Int!
+  exampleField: Int
 
   """Message id"""
-  tenantId: Int!
+  tenantId: Int
 
   """Message content"""
-  content: String!
+  content: String
 }
 
 type Query {

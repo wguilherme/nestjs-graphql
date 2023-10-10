@@ -14,7 +14,11 @@ export class RabbitmqController {
   @MessagePattern()
   findAll(data) {
     const response = this.rabbitmqService.eventReceived(data);
-    this.pubSub.publish('output', { outputResolve: response });
+    this.pubSub.publish('output', {
+      exampleField: 2,
+      tenantId: 2,
+      content: response,
+    });
     return response;
   }
 }

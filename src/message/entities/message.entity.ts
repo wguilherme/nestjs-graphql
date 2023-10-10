@@ -2,14 +2,15 @@ import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class Message {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @Field(() => Int, {
+    description: 'Example field (placeholder)',
+    nullable: true,
+  })
+  exampleField?: number;
 
-  // id field
-  @Field(() => Int, { description: 'Message id' })
-  tenantId: number;
+  @Field(() => Int, { description: 'Message id', nullable: true })
+  tenantId?: number;
 
-  // content field
-  @Field(() => String, { description: 'Message content' })
-  content: string;
+  @Field(() => String, { description: 'Message content', nullable: true })
+  content?: string;
 }

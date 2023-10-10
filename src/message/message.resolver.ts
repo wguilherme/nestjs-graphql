@@ -20,9 +20,9 @@ export class MessageResolver {
     name: 'outputResolve',
     description:
       'Subscription that sends a message whenever an event is received from RabbitMQ.',
+    resolve: (payload) => payload,
   })
   outputResolve() {
-    console.log('chegou aqui');
     return this.pubSub.asyncIterator('output');
   }
 }

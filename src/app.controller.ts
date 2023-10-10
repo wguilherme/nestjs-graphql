@@ -10,9 +10,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @MessagePattern()
-  findAll() {
-    return console.log('AppController.findAll');
-  }
 }

@@ -10,11 +10,7 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      // autoSchemaFile: true,
       autoSchemaFile: 'schema.gql',
-      // subscriptions: {
-      //   'graphql-ws': true,
-      // },
       installSubscriptionHandlers: true,
     }),
     MessageModule,
