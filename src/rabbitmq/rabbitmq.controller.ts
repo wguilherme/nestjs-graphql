@@ -15,7 +15,6 @@ export class RabbitmqController {
   findAll(data) {
     const response = this.rabbitmqService.eventReceived(data);
     this.pubSub.publish('output', {
-      exampleField: 2,
       tenantId: 2,
       content: response,
     });
