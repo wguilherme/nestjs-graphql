@@ -12,6 +12,10 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
       driver: ApolloDriver,
       // autoSchemaFile: true,
       autoSchemaFile: 'schema.gql',
+      // subscriptions: {
+      //   'graphql-ws': true,
+      // },
+      installSubscriptionHandlers: true,
     }),
     MessageModule,
     RabbitmqModule,

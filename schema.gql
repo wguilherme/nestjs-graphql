@@ -16,3 +16,10 @@ type Message {
 type Query {
   message: [Message!]!
 }
+
+type Subscription {
+  """
+  Subscription that sends a message whenever an event is received from RabbitMQ.
+  """
+  outputResolve: Message!
+}

@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class RabbitmqService {
-  eventReceived() {
-    console.log('eventReceived');
+  eventReceived(data: any) {
+    console.log('eventReceived', data);
+    return;
   }
 }
