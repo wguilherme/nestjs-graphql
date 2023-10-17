@@ -16,7 +16,6 @@ message CreateEventRequest {
 }
 
 message Event {
-  string event_id = 1;
   string tenantId = 2;
   string eventName = 3;
   string exchangeName = 4;
@@ -33,11 +32,9 @@ message FindAllEventsResponse {
 }
 
 message FindOneEventRequest {
-  string event_id = 1;
+  string tenantId = 1;
 }
 
 message FindOneEventResponse {
-  // Corrija para o tipo apropriado, presumindo que seja uma mensagem 'Order'.
-  // Se for outra mensagem, substitua 'Order' pelo nome apropriado.
-  Event order = 1;
+  Event event = 1;
 }

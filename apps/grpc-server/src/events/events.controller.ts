@@ -13,7 +13,6 @@ export class EventsController {
 
     const createdEventFormatted = {
       event: {
-        event_id: String(createdEvent._id),
         tenantId: createdEvent.tenantId,
         exchangeName: createdEvent.exchangeName,
         eventName: createdEvent.eventName,
@@ -24,14 +23,16 @@ export class EventsController {
   }
 
   @GrpcMethod('EventService')
-  findAllEvents() {
-    return {
-      event: this.eventsService.findAll(),
-    };
+  async findAllEvents() {
+    const event = await this.eventsService.findAll();
+    return { event };
   }
 
   @GrpcMethod('EventService')
-  findOneEvent(@Payload() tenantId: string) {
-    return this.eventsService.findOne(tenantId);
+  async findOneEvent(@Payload() payload: any) {
+    const event = await this.eventsService.findOne(payload.tenantId);
+    return {
+      event,
+    };
   }
 }

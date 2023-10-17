@@ -14,14 +14,7 @@ export class EventsService {
     return this.eventModel.create(createEventDto);
   }
   findAll() {
-    return [
-      {
-        event_id: 1,
-        tenantId: 1,
-        eventName: 'test',
-        exchangeName: 'test',
-      },
-    ];
+    return this.eventModel.find();
   }
   findOne(tenantId: string) {
     return this.eventModel.findOne({ tenantId });
