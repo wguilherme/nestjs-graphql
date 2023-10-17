@@ -1,0 +1,14 @@
+package hero;
+
+service HeroesService {
+  rpc FindAll (HeroById) returns (repeated Hero) {}
+}
+
+message HeroById {
+  int32 id = 1;
+}
+
+message Hero {
+  int32 id = 1;
+  string name = 2;
+}

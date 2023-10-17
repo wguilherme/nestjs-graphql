@@ -1,8 +1,9 @@
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MessageModule } from './message/message.module';
 import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
 
@@ -17,6 +18,12 @@ import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
     RabbitmqModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: 'SERVICE_NAME',
+      useFactory: () => ClientProxyFactory.create({ transport: Transport.TCP }),
+    },
+  ],
 })
 export class AppModule {}
