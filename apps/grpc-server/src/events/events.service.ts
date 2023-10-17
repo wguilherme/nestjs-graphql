@@ -11,13 +11,17 @@ export class EventsService {
     private readonly eventModel: Model<Event>,
   ) {}
   create(createEventDto: CreateEventDto) {
-    return this.eventModel.create({
-      createEventDto,
-      status: 'pending',
-    });
+    return this.eventModel.create(createEventDto);
   }
   findAll() {
-    return this.eventModel.find();
+    return [
+      {
+        event_id: 1,
+        tenantId: 1,
+        eventName: 'test',
+        exchangeName: 'test',
+      },
+    ];
   }
   findOne(tenantId: string) {
     return this.eventModel.findOne({ tenantId });

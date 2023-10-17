@@ -5,7 +5,7 @@ import { Event, EventSchema } from './entities/event.entity';
 import { MongooseModule } from '@nestjs/mongoose';
 
 const MONGODB_URI =
-  'mongodb://root@root@localhost:27017/events?authSource=admin&directConnection=true';
+  'mongodb://root:root@localhost:27017/events?authSource=admin&directConnection=true';
 
 @Module({
   imports: [

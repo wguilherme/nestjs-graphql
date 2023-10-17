@@ -12,7 +12,6 @@ export class RabbitmqController {
 
   @Post('send')
   async send(@Body() data: any) {
-    console.log('event_received');
     this.rabbitmqService.eventReceived(data);
     this.pubSub.publish('MESSAGE', { message: data });
   }

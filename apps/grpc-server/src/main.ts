@@ -11,6 +11,7 @@ async function bootstrap() {
       options: {
         package: 'com.events',
         protoPath: [join(__dirname, 'events', 'proto', 'events.proto')],
+        url: 'localhost:50051',
       },
     },
   );

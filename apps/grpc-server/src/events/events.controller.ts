@@ -8,8 +8,19 @@ export class EventsController {
   constructor(private readonly eventsService: EventsService) {}
 
   @GrpcMethod('EventService')
-  createEvent(@Payload() createEventDto: CreateEventDto) {
-    return this.eventsService.create(createEventDto);
+  async createEvent(@Payload() createEventDto: CreateEventDto) {
+    const createdEvent = await this.eventsService.create(createEventDto);
+
+    const createdEventFormatted = {
+      event: {
+        event_id: String(createdEvent._id),
+        tenantId: createdEvent.tenantId,
+        exchangeName: createdEvent.exchangeName,
+        eventName: createdEvent.eventName,
+      },
+    };
+
+    return createdEventFormatted;
   }
 
   @GrpcMethod('EventService')
