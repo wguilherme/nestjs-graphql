@@ -25,7 +25,9 @@ export class EventsController {
 
   @GrpcMethod('EventService')
   findAllEvents() {
-    return this.eventsService.findAll();
+    return {
+      event: this.eventsService.findAll(),
+    };
   }
 
   @GrpcMethod('EventService')
