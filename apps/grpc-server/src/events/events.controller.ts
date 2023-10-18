@@ -1,5 +1,7 @@
+import { ServerDuplexStream } from '@grpc/grpc-js';
 import { Controller } from '@nestjs/common';
 import { GrpcMethod, Payload } from '@nestjs/microservices';
+import { from, concatMap, of, delay } from 'rxjs';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventsService } from './events.service';
 
@@ -34,5 +36,32 @@ export class EventsController {
     return {
       event,
     };
+  }
+
+  @GrpcMethod('EventService', 'StreamEvents')
+  async streamEvents(stream: ServerDuplexStream<any, any>) {
+    console.log('stream', stream);
+
+    const eventsArray = [
+      {
+        tenantId: 'test1',
+        exchangeName: 'test1',
+        eventName: 'test1',
+      },
+      {
+        tenantId: 'test1',
+        exchangeName: 'test2',
+        eventName: 'test2',
+      },
+      {
+        tenantId: 'test1',
+        exchangeName: 'test3',
+        eventName: 'test3',
+      },
+    ];
+
+    return from(eventsArray).pipe(
+      concatMap((event) => of({ event }).pipe(delay(2000))),
+    );
   }
 }

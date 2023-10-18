@@ -7,6 +7,7 @@ service EventService {
   rpc CreateEvent(CreateEventRequest) returns (CreateEventResponse) {}
   rpc FindAllEvents(FindAllEventsRequest) returns (FindAllEventsResponse) {}
   rpc FindOneEvent(FindOneEventRequest) returns (FindOneEventResponse) {}
+  rpc StreamEvents(StreamEventsRequest) returns (stream StreamEventsResponse) {}
 }
 
 message CreateEventRequest {
@@ -16,9 +17,9 @@ message CreateEventRequest {
 }
 
 message Event {
-  string tenantId = 2;
-  string eventName = 3;
-  string exchangeName = 4;
+  string tenantId = 1;
+  string eventName = 2;
+  string exchangeName = 3;
 }
 
 message CreateEventResponse {
@@ -36,5 +37,13 @@ message FindOneEventRequest {
 }
 
 message FindOneEventResponse {
+  Event event = 1;
+}
+
+message StreamEventsRequest {
+  string tenantId = 1;
+}
+
+message StreamEventsResponse {
   Event event = 1;
 }
