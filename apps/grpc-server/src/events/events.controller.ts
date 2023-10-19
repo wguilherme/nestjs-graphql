@@ -44,17 +44,17 @@ export class EventsController {
 
     const eventsArray = [
       {
-        tenantId: 'test1',
+        tenantId: 'tenant1',
         exchangeName: 'test1',
         eventName: 'test1',
       },
       {
-        tenantId: 'test1',
+        tenantId: 'tenant2',
         exchangeName: 'test2',
         eventName: 'test2',
       },
       {
-        tenantId: 'test1',
+        tenantId: 'tenant3',
         exchangeName: 'test3',
         eventName: 'test3',
       },
