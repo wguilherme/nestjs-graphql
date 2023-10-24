@@ -1,9 +1,11 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, UseInterceptors } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { RabbitmqService } from './rabbitmq.service';
 import { Inject } from '@nestjs/common';
 import { PubSub } from 'graphql-subscriptions';
+import { LoggingInterceptor } from '../logger/logger.interceptor';
 
+@UseInterceptors(LoggingInterceptor)
 @Controller()
 export class RabbitmqController {
   constructor(
@@ -19,5 +21,10 @@ export class RabbitmqController {
       content: response,
     });
     return response;
+  }
+
+  @Get('/hello')
+  getHello(): string {
+    return this.rabbitmqService.getHello();
   }
 }
