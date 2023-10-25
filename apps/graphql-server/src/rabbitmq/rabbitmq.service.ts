@@ -7,6 +7,7 @@ export class RabbitmqService {
   ) {}
 
   eventReceived(data: any) {
+    this.logger.log('A new event was received!');
     return data;
   }
 
